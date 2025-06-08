@@ -8,6 +8,7 @@ import com.picpay.credit.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
 import static com.picpay.credit.mappers.UserMapper.passwordEncoder;
 
 @Component
+@Order(2)
 @RequiredArgsConstructor
 public class UserSeeder implements CommandLineRunner {
 

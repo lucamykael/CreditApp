@@ -29,7 +29,7 @@ public class UserAuthenticationFilter extends OncePerRequestFilter {
 
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-    System.out.println("Requisição recebida: " + request.getMethod() + " " + request.getRequestURI());
+    System.out.println("Request receive: " + request.getMethod() + " " + request.getRequestURI());
 
     if(checkIfEndpointIsNotPublic(request)){
       String token = recoveryToken(request);
