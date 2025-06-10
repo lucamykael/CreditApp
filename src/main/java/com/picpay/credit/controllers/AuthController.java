@@ -27,4 +27,19 @@ public class AuthController {
   public ResponseEntity<String> helloWorld(){
     return ResponseEntity.ok("Hello World");
   }
+
+  @GetMapping("/customer")
+  public ResponseEntity<String> helloCustomer(){
+    return ResponseEntity.ok("Hello Customer");
+  }
+
+  @GetMapping("/support")
+  public ResponseEntity<String> helloSupport(){
+    return ResponseEntity.ok("Hello Support");
+  }
+
+  @PostMapping("/refreshToken")
+  public ResponseEntity<RecoveryJwtTokenDto> refreshToken(@RequestBody RecoveryJwtTokenDto token){
+    return new ResponseEntity<>(service.refreshTokenUser(token), HttpStatus.OK);
+  }
 }

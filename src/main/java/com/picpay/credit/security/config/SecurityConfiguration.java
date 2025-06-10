@@ -26,6 +26,7 @@ public class SecurityConfiguration {
 
   public static final String[] ENDPOINTS_WITH_AUTH_NOT_REQUIRED = {
           "/auth/login",
+          "/auth/refreshToken",
           "/users"
   };
 

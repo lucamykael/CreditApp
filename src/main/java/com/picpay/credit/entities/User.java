@@ -26,7 +26,11 @@ public class User {
   @Column(name = "LAST_NAME", nullable = false, length = 100)
   private String lastName;
 
+<<<<<<< HEAD
+  @Column(name = "PASSWORD", nullable = false)
+=======
   @Column(name = "PASSWORD", nullable = false, length = 255)
+>>>>>>> origin/master
   @JsonIgnore
   private String password;
 

@@ -4,12 +4,14 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.picpay.credit.dtos.RecoveryJwtTokenDto;
 import com.picpay.credit.interfaces.ITokenService;
 import com.picpay.credit.security.UserDetailsImpl;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class TokenService implements ITokenService {
@@ -33,6 +35,29 @@ public class TokenService implements ITokenService {
               .withSubject(user.getUsername())
               .withClaim("role", roles)
               .sign(algorithm);
+    } catch(JWTCreationException ex){
+      throw new RuntimeException("Error when try generate token", ex);
+    }
+  }
+
+  public String refreshToken(RecoveryJwtTokenDto token){
+    try{
+      Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY);
+      var verifier = JWT.require(algorithm)
+            .withIssuer(ISSUER)
+            .build();
+
+    var decodedJwt = verifier.verify(token.token());
+    String email = decodedJwt.getSubject();
+    List<String> roles =  decodedJwt.getClaim("role").asList(String.class);
+
+    return JWT.create()
+            .withIssuer(ISSUER)
+            .withIssuedAt(creationDate())
+            .withExpiresAt(expirationDate())
+            .withSubject(email)
+            .withClaim("role", roles)
+            .sign(algorithm);
     } catch(JWTCreationException ex){
       throw new RuntimeException("Error when try generate token", ex);
     }
