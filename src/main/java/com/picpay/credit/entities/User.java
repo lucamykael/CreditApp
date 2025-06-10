@@ -17,20 +17,24 @@ public class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "ID")
+  @Column(name = "ID", updatable = false, nullable = false)
   private Long id;
 
-  @Column(name = "FIRST_NAME", nullable = false)
+  @Column(name = "FIRST_NAME", nullable = false, length = 100)
   private String firstName;
 
-  @Column(name = "LAST_NAME", nullable = false)
+  @Column(name = "LAST_NAME", nullable = false, length = 100)
   private String lastName;
 
+<<<<<<< HEAD
   @Column(name = "PASSWORD", nullable = false)
+=======
+  @Column(name = "PASSWORD", nullable = false, length = 255)
+>>>>>>> origin/master
   @JsonIgnore
   private String password;
 
-  @Column(name = "EMAIL", unique = true)
+  @Column(name = "EMAIL", unique = true, length = 150)
   private String email;
 
   @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
