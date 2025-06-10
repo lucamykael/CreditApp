@@ -26,15 +26,12 @@ public class SecurityConfiguration {
 
   public static final String[] ENDPOINTS_WITH_AUTH_NOT_REQUIRED = {
           "/auth/login",
+          "/auth/refreshToken",
           "/users"
   };
 
-  public static final String[] ENDPOINTS_WITH_AUTH_REQUIRED = {
-          "/auth/hello"
-  };
-
   public static final String[] ENDPOINTS_ADMIN = {
-          "/users/user",
+          "/users/{id}",
           "/auth/hello"
   };
 

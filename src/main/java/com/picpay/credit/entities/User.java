@@ -1,5 +1,6 @@
 package com.picpay.credit.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,6 +27,7 @@ public class User {
   private String lastName;
 
   @Column(name = "PASSWORD", nullable = false)
+  @JsonIgnore
   private String password;
 
   @Column(name = "EMAIL", unique = true)

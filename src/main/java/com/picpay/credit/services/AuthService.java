@@ -24,4 +24,8 @@ public class AuthService implements IAuthService {
       UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
       return new RecoveryJwtTokenDto(tokenService.generateToken(userDetails));
   }
+
+  public RecoveryJwtTokenDto refreshTokenUser(RecoveryJwtTokenDto token){
+    return new RecoveryJwtTokenDto(tokenService.refreshToken(token));
+  }
 }
