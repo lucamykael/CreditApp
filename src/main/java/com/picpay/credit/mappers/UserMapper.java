@@ -4,6 +4,7 @@ import com.picpay.credit.dtos.UserDto;
 import com.picpay.credit.entities.Role;
 import com.picpay.credit.entities.User;
 import com.picpay.credit.enums.RoleName;
+import com.picpay.credit.models.UserCreatedEvent;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
@@ -24,6 +25,12 @@ public interface UserMapper {
   @Mapping(target = "password", expression = "java(passwordEncoder.encode(dto.password()))")
   @Mapping(target = "roles", expression = "java(java.util.List.of(role))")
   User toEntity(UserDto dto, Role role);
+
+  @Mapping(target = "id", source = "user.id")
+  @Mapping(target = "firstName", source = "user.firstName")
+  @Mapping(target = "lastName", source = "user.lastName")
+  @Mapping(target = "email", source = "user.email")
+  UserCreatedEvent toProducer(User user);
 
   default List<Role> map(RoleName roleName){
     if(roleName == null) return null;

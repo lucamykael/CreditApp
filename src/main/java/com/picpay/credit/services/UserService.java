@@ -1,5 +1,6 @@
 package com.picpay.credit.services;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.picpay.credit.dtos.LoginRequestDto;
 import com.picpay.credit.dtos.RecoveryJwtTokenDto;
 import com.picpay.credit.dtos.UserDto;
@@ -9,6 +10,8 @@ import com.picpay.credit.exceptions.NotFoundException;
 import com.picpay.credit.exceptions.UniqueConstraintViolationException;
 import com.picpay.credit.interfaces.IUserService;
 import com.picpay.credit.mappers.UserMapper;
+import com.picpay.credit.models.UserCreatedEvent;
+import com.picpay.credit.producers.UserProducer;
 import com.picpay.credit.repositories.RoleRepository;
 import com.picpay.credit.repositories.UserRepository;
 import com.picpay.credit.security.UserDetailsImpl;
@@ -34,8 +37,9 @@ public class UserService implements IUserService {
   private final UserMapper mapper;
   private final UserRepository repository;
   private final RoleRepository roleRepository;
+  private final UserProducer userProducer;
 
-  public void createUser(UserDto dto) {
+  public void createUser(UserDto dto) throws JsonProcessingException {
     Role role = roleRepository.findByName(dto.role()).orElseThrow(() -> new NotFoundException("Role not exists"));
     User user = mapper.toEntity(dto, role);
     try {
@@ -43,6 +47,9 @@ public class UserService implements IUserService {
     } catch(DataIntegrityViolationException ex){
       throw new UniqueConstraintViolationException("Email is duplicated. Please, try another email");
     }
+
+    UserCreatedEvent event = mapper.toProducer(user);
+    userProducer.sendUserCreatedEvent(event);
   }
 
   public String deleteUser(Long id) {

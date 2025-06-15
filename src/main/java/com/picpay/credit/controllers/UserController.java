@@ -1,5 +1,6 @@
 package com.picpay.credit.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.picpay.credit.dtos.UserDto;
 import com.picpay.credit.entities.User;
 import com.picpay.credit.interfaces.IUserService;
@@ -19,7 +20,7 @@ public class UserController {
   private final IUserService service;
 
   @PostMapping
-  public ResponseEntity<Void> create(@RequestBody UserDto dto){
+  public ResponseEntity<Void> create(@RequestBody UserDto dto) throws JsonProcessingException {
     service.createUser(dto);
     return new ResponseEntity<>(HttpStatus.CREATED);
   }
