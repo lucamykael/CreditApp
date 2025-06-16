@@ -1,9 +1,9 @@
 package com.picpay.credit.services;
 
-import com.picpay.credit.dtos.LoginRequestDto;
-import com.picpay.credit.dtos.RecoveryJwtTokenDto;
-import com.picpay.credit.interfaces.IAuthService;
-import com.picpay.credit.interfaces.ITokenService;
+import com.picpay.credit.domain.dtos.LoginRequestDto;
+import com.picpay.credit.domain.dtos.RecoveryJwtTokenDto;
+import com.picpay.credit.domain.interfaces.IAuthService;
+import com.picpay.credit.domain.interfaces.ITokenService;
 import com.picpay.credit.security.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;

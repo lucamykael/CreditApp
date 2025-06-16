@@ -1,8 +1,6 @@
 package com.picpay.credit.security;
 
-import com.picpay.credit.entities.User;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import com.picpay.credit.domain.entities.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

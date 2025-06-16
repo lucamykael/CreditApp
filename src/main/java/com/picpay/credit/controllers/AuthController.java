@@ -1,8 +1,8 @@
 package com.picpay.credit.controllers;
 
-import com.picpay.credit.dtos.LoginRequestDto;
-import com.picpay.credit.dtos.RecoveryJwtTokenDto;
-import com.picpay.credit.interfaces.IAuthService;
+import com.picpay.credit.domain.dtos.LoginRequestDto;
+import com.picpay.credit.domain.dtos.RecoveryJwtTokenDto;
+import com.picpay.credit.domain.interfaces.IAuthService;
 import com.picpay.credit.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

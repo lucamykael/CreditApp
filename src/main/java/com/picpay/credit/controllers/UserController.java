@@ -1,9 +1,9 @@
 package com.picpay.credit.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.picpay.credit.dtos.UserDto;
-import com.picpay.credit.entities.User;
-import com.picpay.credit.interfaces.IUserService;
+import com.picpay.credit.domain.dtos.UserDto;
+import com.picpay.credit.domain.entities.User;
+import com.picpay.credit.domain.interfaces.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;

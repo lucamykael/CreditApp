@@ -1,8 +1,8 @@
 package com.picpay.credit.utils;
 
-import com.picpay.credit.dtos.ExceptionJsonDto;
-import com.picpay.credit.exceptions.NotFoundException;
-import com.picpay.credit.exceptions.UniqueConstraintViolationException;
+import com.picpay.credit.domain.dtos.ExceptionJsonDto;
+import com.picpay.credit.domain.exceptions.NotFoundException;
+import com.picpay.credit.domain.exceptions.UniqueConstraintViolationException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

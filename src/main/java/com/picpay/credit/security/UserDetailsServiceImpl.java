@@ -1,7 +1,7 @@
 package com.picpay.credit.security;
 
-import com.picpay.credit.entities.User;
-import com.picpay.credit.repositories.UserRepository;
+import com.picpay.credit.domain.entities.User;
+import com.picpay.credit.infrastructure.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,5 +1,6 @@
 package com.picpay.credit.entities;
 
+import com.picpay.credit.domain.entities.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
